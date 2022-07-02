@@ -1,8 +1,10 @@
 import os
 from urllib.parse import urljoin
+from uuid import uuid4
 
 import uvicorn
 from fastapi import FastAPI, Request
+from pydantic import BaseModel
 from slack_bolt import App
 from slack_bolt.adapter.fastapi import SlackRequestHandler
 from slack_bolt.oauth.oauth_settings import OAuthSettings
@@ -102,5 +104,14 @@ async def send_messages(message: str):
         print("result = ", result)
 
 
+class Model(BaseModel):
+    email: str
+
+
+@api.post("/login")
+async def custom_login(model: Model):
+    return {"token": str(uuid4()), "account_id": str(uuid4())}
+
+
 if __name__ == "__main__":
-    uvicorn.run("app:api", host="0.0.0.0", port=3000, reload=True)
+    uvicorn.run("app:api", host="0.0.0.0", port=5000, reload=True)
