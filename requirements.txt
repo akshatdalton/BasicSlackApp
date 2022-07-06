@@ -2,3 +2,5 @@ pre-commit
 slack_bolt
 fastapi
 uvicorn
+chevron
+orjson

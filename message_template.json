@@ -1,0 +1,26 @@
+{
+    "dataset_registration": {
+        "slack": {
+            "template": {
+                "blocks": [
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": "Hey {{ user_name }}, your dataset registration flow for dataset: {{ dataset_name }} and dataset_id: {{ dataset_id }} just completed.\nCheckout the results at: <https://www.markovml.com|MarkovML>"
+                        }
+                    }
+                ]
+            },
+            "plugin_variables": ["user_name", "dataset_name", "dataset_id"]
+        },
+        "email": {
+            "template": "Hey {{ user_name }},\n\nYou dataset registration flow for dataset: {{ dataset_name }} and dataset_id: {{ dataset_id }} just completed.\n        \nRegards,\nMarkovML",
+            "plugin_variables": ["user_name", "dataset_name", "dataset_id"]
+        }
+    },
+    "some_workflow_completed": {
+        "slack": "",
+        "email": ""
+    }
+}
